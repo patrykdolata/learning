@@ -13,3 +13,22 @@
   background-color: gray;
   width: 50px !important;
 }
+
+.yellow {
+  background-color: yellow;
+}
+
+.border {
+  border: 2px solid black;
+}
+
+.box{
+  width: 50px;
+  height: 50px;
+}
+
+.progresBorder{
+  border: 2px solid black;
+  height: 25px;
+  width: 300px;
+}
