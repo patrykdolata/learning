@@ -1,0 +1,41 @@
+<div id="develop">
+	<button @click="showBooks = !showBooks">Książki</button>
+	
+	<div v-if="showBooks">
+		<strong>Książki obecnie czytane:</strong>
+		<ul>
+			<li v-for="bookInProgres in inProgressBooks">{{bookInProgres.title}}
+				<div :style="{border: '1px solid #bbb', width: '100px', height: '22px'}">
+					<div :style="{backgroundColor: 'green', width: (bookInProgres.current/bookInProgres.pages*100) + 'px', height: '20px'}"></div>
+				</div>
+			</li>
+		</ul>
+		<strong>Książki do przeczytania:</strong>
+		<ul>
+			<li v-for="bookToRead in booksToRead">{{bookToRead.title}}</li>
+		</ul>
+		<strong>Książki przeczytane:</strong>
+		<ul>
+			<li v-for="readBook in readBooks">{{readBook.title}}</li>
+		</ul>
+	</div>
+	<button @click="showCourses = !showCourses">Kursy</button>
+	<div v-if="showCourses">
+		<strong>Kursy przerabiane:</strong>
+		<ul>
+			<li v-for="courseInProgres in inProgressCourses">{{courseInProgres.title}}
+				<div :style="{border: '1px solid #bbb', width: '100px', height: '22px'}">
+					<div :style="{backgroundColor: 'green', width: (courseInProgres.current/courseInProgres.pages*100) + 'px', height: '20px'}"></div>
+				</div>
+			</li>
+		</ul>
+		<strong>Kursy do przerobienia:</strong>
+		<ul>
+			<li v-for="courseToWatch in coursesToWatch">{{courseToWatch.title}}</li>
+		</ul>
+		<strong>Kursy przerobione:</strong>
+		<ul>
+			<li v-for="doneCourse in doneCourses">{{doneCourse.title}}</li>
+		</ul>
+	</div>
+</div>
