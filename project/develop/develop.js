@@ -1,8 +1,7 @@
 new Vue({
 	el: '#develop',
 	data: {
-		showBooks: false,
-		showCourses: false,
+		show: 'books',
 		buttonStyle: {
 			display: 'inline-block',
 			float: 'left',
@@ -61,5 +60,20 @@ new Vue({
 			{title: 'Spring & Hibernate for Beginners', author: 'Chad Darby', pages: 218, current: 218, times: 1, last: '01.01.2017'},
 			{title: '11 Essential Coding Interview Questions + Coding Exercises!', author: 'YK Sugishita', pages: 56, current: 56, times: 1, last: '01.01.2018'}
 		]
+	},
+	methods:{
+		selectTab: function(name){
+			this.show = name;
+			switch(name){
+				case 'books':
+					document.getElementById('booksTabButton').classList.add('developMenuButtonPressed');
+					document.getElementById('coursesTabButton').classList.remove('developMenuButtonPressed');
+				break;
+				case 'courses': 
+					document.getElementById('coursesTabButton').classList.add('developMenuButtonPressed'); 
+					document.getElementById('booksTabButton').classList.remove('developMenuButtonPressed');
+				break;
+			}
+		}
 	}
 });

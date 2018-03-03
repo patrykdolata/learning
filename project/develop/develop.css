@@ -1,0 +1,32 @@
+#developMenu button{
+	width: 200px;
+	background-color: black;
+	-webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#developMenu button.developMenuButtonPressed{
+	background-color: green;
+	width: 200px;
+}
+
+#developMenu button:hover{
+	background-color: #25a71e;
+}
+
+#developMenu button.developMenuButtonPressed:hover{
+	background-color: green;
+	width: 200px;
+}
+
+#developMenu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#developMenu li {
+    float: left;
+	margin: 1px;
+}

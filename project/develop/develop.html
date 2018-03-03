@@ -1,7 +1,9 @@
 <div id="develop">
-	<button @click="showBooks = !showBooks">Książki</button>
-	
-	<div v-if="showBooks">
+	<ul id="developMenu">
+		<li><button class="developMenuButtonPressed" id="booksTabButton" @click="selectTab('books')">Książki</button></li>
+		<li><button id="coursesTabButton" @click="selectTab('courses')">Kursy</button></li>
+	</ul>
+	<div v-if="show === 'books'">
 		<strong>Książki obecnie czytane:</strong>
 		<ul>
 			<li v-for="bookInProgres in inProgressBooks">{{bookInProgres.title}}
@@ -19,8 +21,7 @@
 			<li v-for="readBook in readBooks">{{readBook.title}}</li>
 		</ul>
 	</div>
-	<button @click="showCourses = !showCourses">Kursy</button>
-	<div v-if="showCourses">
+	<div v-if="show === 'courses'">
 		<strong>Kursy przerabiane:</strong>
 		<ul>
 			<li v-for="courseInProgres in inProgressCourses">{{courseInProgres.title}}
