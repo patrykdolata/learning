@@ -30,3 +30,45 @@
     float: left;
 	margin: 1px;
 }
+
+.hideProgressElement{
+	-webkit-transition-duration: 2s; /* Safari */
+    transition-duration: 2s;
+	margin-left: 10px;
+	float: left;
+	color: green; 
+	visibility: hidden;
+}
+
+.showProgressElement{
+	-webkit-transition-duration: 1s; /* Safari */
+    transition-duration: 1s;
+	margin-left: 10px;
+	float: left;
+	color: green; 
+	visibility: show;
+}
+
+.progressContainer{
+	width: 100%;
+	display: inline-block;
+}
+
+.progressBarContainer{
+	border: 1px solid #bbb;
+	width: 100px;
+	height: 22px;
+	float: left;
+}
+
+.progressBar{
+	background-color: green;
+	height: 20px;
+}
+
+.progressBarIncrement{
+	background-color: #7fc100;
+	height: 20px;
+	float: left;
+}
+

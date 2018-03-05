@@ -8,19 +8,20 @@ new Vue({
 			width: '200px'
 		},
 		inProgressBooks: [
-			{title: 'Kod doskonały 2', author: 'Steve McConnell', pages: 898, current: 122, times: 0},
+			{title: 'Kod doskonały 2', author: 'Steve McConnell', pages: 898, current: 125, times: 0, progress: 3, progressClass: 'showProgressElement'},
 			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 135, times: 0},
 			{title: 'Java 8. Przewodnik doświadczonego programisty', author: 'Cay S. Horstmann', pages: 414, current: 297, times: 0},
+			{title: 'Refaktoryzacja. Ulepszanie struktury istniejącego kodu', author: 'Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts, Erich Gamma', pages: 384, current: 17, times: 0, progress: 17, progressClass: 'showProgressElement'},
 			{title: 'Grama to nie drama 1', author: 'Arlena Witt', pages: 271, current: 82, times: 0}
 		],
 		booksToRead: [
 			{title: 'Wzorce projektowe. Elementy oprogramowania obiektowego wielokrotnego użytku', author: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', pages: 356, current: 0, times: 0},
-			{title: 'Refaktoryzacja. Ulepszanie struktury istniejącego kodu', author: 'Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts, Erich Gamma', pages: 384, current: 0, times: 0},
 			{title: 'Rozmowa rekrutacyjna dla porgramistów', author: 'Gayle Lakkmann McDowell', pages: 485, current: 0, times: 0},
 			{title: 'Grama to nie drama 2', author: 'Arlena Witt', pages: 249, current: 0, times: 0},
 			{title: 'Biblia e-biznesu 2', author: 'Maciej Dutko', pages: 772, current: 0, times: 0},
 			{title: 'Introwertyzm to zaleta', author: 'Marti Olsen', pages: 308, current: 0, times: 0},
-			{title: 'Bogaty Ojciec Biedny Ojciec', author: 'Robert Kiyosaki', pages: 147, current: 0, times: 0}
+			{title: 'Bogaty Ojciec Biedny Ojciec', author: 'Robert Kiyosaki', pages: 147, current: 0, times: 0},
+			{title: 'Fastlane Milionera', author: 'MJ DeMarco', pages: 528, current: 0, times: 0}
 		],
 		readBooks: [
 			{title: 'Włam się do mózgu', author: 'Radosław Kotarski', pages: 320, current: 320, times: 1, last: '01.02.2018'},
@@ -61,6 +62,14 @@ new Vue({
 			{title: '11 Essential Coding Interview Questions + Coding Exercises!', author: 'YK Sugishita', pages: 56, current: 56, times: 1, last: '01.01.2018'}
 		]
 	},
+	created: function(){
+		var vm = this;
+		setTimeout(function(){
+			for(var i = 0; i < vm.inProgressBooks.length; i++){
+				if(vm.inProgressBooks[i].progress > 0){
+					vm.inProgressBooks[i].progressClass = 'hideProgressElement';
+				}}},2000);
+	},
 	methods:{
 		selectTab: function(name){
 			this.show = name;
@@ -74,6 +83,12 @@ new Vue({
 					document.getElementById('booksTabButton').classList.remove('developMenuButtonPressed');
 				break;
 			}
+		},
+		showProgressNumber: function(bookInProgress){
+			bookInProgress.progressClass = 'showProgressElement';
+		},
+		hideProgressNumber: function(bookInProgress){
+			bookInProgress.progressClass = 'hideProgressElement';
 		}
 	}
 });

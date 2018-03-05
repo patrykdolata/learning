@@ -6,9 +6,15 @@
 	<div v-if="show === 'books'">
 		<strong>Książki obecnie czytane:</strong>
 		<ul>
-			<li v-for="bookInProgres in inProgressBooks">{{bookInProgres.title}}
-				<div :style="{border: '1px solid #bbb', width: '100px', height: '22px'}">
-					<div :style="{backgroundColor: 'green', width: (bookInProgres.current/bookInProgres.pages*100) + 'px', height: '20px'}"></div>
+			<li v-for="(bookInProgress, index) in inProgressBooks">{{bookInProgress.title}}
+				<div class="progressContainer">
+					<div @mouseover="showProgressNumber(bookInProgress)" @mouseleave="hideProgressNumber(bookInProgress)" class="progressBarContainer">
+							<div class="progressBar" :style="{width: (bookInProgress.current/bookInProgress.pages*100) + 'px'}">
+								<div :class="['progressBarIncrement',bookInProgress.progressClass]" :style="{width: (bookInProgress.progress/bookInProgress.pages*100) + 'px', marginLeft: (bookInProgress.current/bookInProgress.pages*100-bookInProgress.progress/bookInProgress.pages*100) + 'px'}"></div>
+							</div>
+					
+					</div>
+					<div v-if="bookInProgress.progress" :class="bookInProgress.progressClass">+{{bookInProgress.progress}}</div>
 				</div>
 			</li>
 		</ul>
