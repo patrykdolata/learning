@@ -47,7 +47,7 @@ new Vue({
 			{title: 'Siła nawyku', author: 'Duhigg Charles', pages: 424, current: 424, times: 1}
 		],
 		inProgressCourses: [
-			{title: 'Vue JS 2 - The Complete Guide', author: 'Maximilian Schwarzmüller', pages: 386, current: 55, times: 0},
+			{title: 'Vue JS 2 - The Complete Guide', author: 'Maximilian Schwarzmüller', pages: 386, current: 55, times: 0, progress: 3, progressClass: 'showProgressElement'},
 			{title: 'Practical Data Structures & Algorithms in Java + HW', author: 'Imtiaz Ahmad', pages: 40, current: 17, times: 0},
 			{title: 'Spring Framework Masterclass: Beginner to Professional', author: 'Tim Buchalka', pages: 165, current: 61, times: 0},
 			{title: 'Cucumber with Selenium Java', author: 'Karthik KK', pages: 20, current: 4, times: 0}
@@ -60,29 +60,57 @@ new Vue({
 			{title: 'Complete Java Masterclass', author: 'Tim Buchalka', pages: 330, current: 330, times: 1, last: '01.02.2017'},
 			{title: 'Spring & Hibernate for Beginners', author: 'Chad Darby', pages: 218, current: 218, times: 1, last: '01.01.2017'},
 			{title: '11 Essential Coding Interview Questions + Coding Exercises!', author: 'YK Sugishita', pages: 56, current: 56, times: 1, last: '01.01.2018'}
+		],
+		myfitnesspal: [
+		{date: '', url: 'http://www.myfitnesspal.com/reports/printable_diary/Dolti?from=2017-03-01&to=2017-03-01'}
 		]
 	},
 	created: function(){
-		var vm = this;
-		setTimeout(function(){
-			for(var i = 0; i < vm.inProgressBooks.length; i++){
-				if(vm.inProgressBooks[i].progress > 0){
-					vm.inProgressBooks[i].progressClass = 'hideProgressElement';
-				}}},2000);
+		this.hideProgressesAfter(2000);
 	},
 	methods:{
+		hideProgressesAfter: function(time){
+			var vm = this;
+			var tab;
+			switch(this.show){
+				case 'books':
+					tab = vm.inProgressBooks;
+				break;
+				case 'courses':
+					tab = vm.inProgressCourses;
+				break;
+			}
+			setTimeout(function(){
+				for(var i = 0; i < tab.length; i++){
+					if(tab[i].progress > 0){
+						tab[i].progressClass = 'hideProgressElement';
+					}}},time);
+		},
+		showProgress: function(tab){
+				for(var i = 0; i < tab.length; i++){
+					if(tab[i].progress > 0){
+						tab[i].progressClass = 'showProgressElement';
+					}
+				}
+				this.hideProgressesAfter(2000);
+		},
 		selectTab: function(name){
+			var tab;
 			this.show = name;
 			switch(name){
 				case 'books':
 					document.getElementById('booksTabButton').classList.add('developMenuButtonPressed');
 					document.getElementById('coursesTabButton').classList.remove('developMenuButtonPressed');
+					tab = this.inProgressBooks;
 				break;
 				case 'courses': 
 					document.getElementById('coursesTabButton').classList.add('developMenuButtonPressed'); 
 					document.getElementById('booksTabButton').classList.remove('developMenuButtonPressed');
+					tab = this.inProgressCourses;
+					
 				break;
 			}
+			this.showProgress(tab);
 		},
 		showProgressNumber: function(bookInProgress){
 			bookInProgress.progressClass = 'showProgressElement';
@@ -91,4 +119,4 @@ new Vue({
 			bookInProgress.progressClass = 'hideProgressElement';
 		}
 	}
-});
+	});

@@ -30,9 +30,15 @@
 	<div v-if="show === 'courses'">
 		<strong>Kursy przerabiane:</strong>
 		<ul>
-			<li v-for="courseInProgres in inProgressCourses">{{courseInProgres.title}}
-				<div :style="{border: '1px solid #bbb', width: '100px', height: '22px'}">
-					<div :style="{backgroundColor: 'green', width: (courseInProgres.current/courseInProgres.pages*100) + 'px', height: '20px'}"></div>
+			<li v-for="(courseInProgress, index) in inProgressCourses">{{courseInProgress.title}}
+				<div class="progressContainer">
+					<div @mouseover="showProgressNumber(courseInProgress)" @mouseleave="hideProgressNumber(courseInProgress)" class="progressBarContainer">
+							<div class="progressBar" :style="{width: (courseInProgress.current/courseInProgress.pages*100) + 'px'}">
+								<div :class="['progressBarIncrement',courseInProgress.progressClass]" :style="{width: (courseInProgress.progress/courseInProgress.pages*100) + 'px', marginLeft: (courseInProgress.current/courseInProgress.pages*100-courseInProgress.progress/courseInProgress.pages*100) + 'px'}"></div>
+							</div>
+					
+					</div>
+					<div v-if="courseInProgress.progress" :class="courseInProgress.progressClass">+{{courseInProgress.progress}}</div>
 				</div>
 			</li>
 		</ul>
@@ -44,5 +50,8 @@
 		<ul>
 			<li v-for="doneCourse in doneCourses">{{doneCourse.title}}</li>
 		</ul>
+	</div>
+	<div v-if="show==='diet'">
+		<button @click="getHTML()">Klik</button>
 	</div>
 </div>
