@@ -9,7 +9,7 @@ new Vue({
 		},
 		inProgressBooks: [
 			{title: 'Kod doskonały 2', author: 'Steve McConnell', pages: 898, current: 125, times: 0, progress: 3, progressClass: 'showProgressElement'},
-			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 135, times: 0},
+			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 161, times: 0, progress: 26, progressClass: 'showProgressElement'},
 			{title: 'Java 8. Przewodnik doświadczonego programisty', author: 'Cay S. Horstmann', pages: 414, current: 297, times: 0},
 			{title: 'Refaktoryzacja. Ulepszanie struktury istniejącego kodu', author: 'Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts, Erich Gamma', pages: 384, current: 17, times: 0, progress: 17, progressClass: 'showProgressElement'},
 			{title: 'Grama to nie drama 1', author: 'Arlena Witt', pages: 271, current: 82, times: 0}
