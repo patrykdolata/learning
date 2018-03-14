@@ -9,7 +9,7 @@ new Vue({
 		},
 		inProgressBooks: [
 			{title: 'Kod doskonały 2', author: 'Steve McConnell', pages: 898, current: 125, times: 0, progress: 3, progressClass: 'showProgressElement'},
-			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 161, times: 0, progress: 26, progressClass: 'showProgressElement'},
+			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 228, times: 1, last: '12.03.2018', progress: 93, progressClass: 'showProgressElement'},
 			{title: 'Java 8. Przewodnik doświadczonego programisty', author: 'Cay S. Horstmann', pages: 414, current: 297, times: 0},
 			{title: 'Refaktoryzacja. Ulepszanie struktury istniejącego kodu', author: 'Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts, Erich Gamma', pages: 384, current: 17, times: 0, progress: 17, progressClass: 'showProgressElement'},
 			{title: 'Grama to nie drama 1', author: 'Arlena Witt', pages: 271, current: 82, times: 0}
@@ -47,10 +47,11 @@ new Vue({
 			{title: 'Siła nawyku', author: 'Duhigg Charles', pages: 424, current: 424, times: 1}
 		],
 		inProgressCourses: [
-			{title: 'Vue JS 2 - The Complete Guide', author: 'Maximilian Schwarzmüller', pages: 386, current: 55, times: 0, progress: 3, progressClass: 'showProgressElement'},
+			{title: 'Vue JS 2 - The Complete Guide', author: 'Maximilian Schwarzmüller', pages: 386, current: 67, times: 0, progress: 12, progressClass: 'showProgressElement'},
 			{title: 'Practical Data Structures & Algorithms in Java + HW', author: 'Imtiaz Ahmad', pages: 40, current: 17, times: 0},
 			{title: 'Spring Framework Masterclass: Beginner to Professional', author: 'Tim Buchalka', pages: 165, current: 61, times: 0},
-			{title: 'Cucumber with Selenium Java', author: 'Karthik KK', pages: 20, current: 4, times: 0}
+			{title: 'Cucumber with Selenium Java', author: 'Karthik KK', pages: 20, current: 4, times: 0},
+			{title: 'UML 2 Tutorial', author: 'Sparx Systems', pages: 14, current: 0, times: 0}
 		],
 		coursesToWatch: [
 			{title: 'Master Jenkins CI For DevOps and Developers', author: 'Level Up', pages: 59, current: 1, times: 0},

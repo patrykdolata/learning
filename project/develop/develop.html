@@ -24,7 +24,7 @@
 		</ul>
 		<strong>Książki przeczytane:</strong>
 		<ul>
-			<li v-for="readBook in readBooks">{{readBook.title}}</li>
+			<li v-for="readBook in readBooks">{{readBook.title}} <template v-if="readBook.last">({{readBook.last}})</template></li>
 		</ul>
 	</div>
 	<div v-if="show === 'courses'">
