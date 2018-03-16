@@ -12,10 +12,10 @@ new Vue({
 			{title: 'TDD. Sztuka tworzenia dobrego kodu', author: 'Kent Beck', pages: 228, current: 228, times: 1, last: '12.03.2018', progress: 93, progressClass: 'showProgressElement'},
 			{title: 'Java 8. Przewodnik doświadczonego programisty', author: 'Cay S. Horstmann', pages: 414, current: 297, times: 0},
 			{title: 'Refaktoryzacja. Ulepszanie struktury istniejącego kodu', author: 'Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts, Erich Gamma', pages: 384, current: 17, times: 0, progress: 17, progressClass: 'showProgressElement'},
-			{title: 'Grama to nie drama 1', author: 'Arlena Witt', pages: 271, current: 82, times: 0}
+			{title: 'Grama to nie drama 1', author: 'Arlena Witt', pages: 271, current: 82, times: 0},
+			{title: 'Wzorce projektowe. Elementy oprogramowania obiektowego wielokrotnego użytku', author: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', pages: 356, current: 31, times: 0, progress: 31, progressClass: 'showProgressElement'},
 		],
 		booksToRead: [
-			{title: 'Wzorce projektowe. Elementy oprogramowania obiektowego wielokrotnego użytku', author: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides', pages: 356, current: 0, times: 0},
 			{title: 'Rozmowa rekrutacyjna dla porgramistów', author: 'Gayle Lakkmann McDowell', pages: 485, current: 0, times: 0},
 			{title: 'Grama to nie drama 2', author: 'Arlena Witt', pages: 249, current: 0, times: 0},
 			{title: 'Biblia e-biznesu 2', author: 'Maciej Dutko', pages: 772, current: 0, times: 0},
@@ -51,7 +51,6 @@ new Vue({
 			{title: 'Practical Data Structures & Algorithms in Java + HW', author: 'Imtiaz Ahmad', pages: 40, current: 17, times: 0},
 			{title: 'Spring Framework Masterclass: Beginner to Professional', author: 'Tim Buchalka', pages: 165, current: 61, times: 0},
 			{title: 'Cucumber with Selenium Java', author: 'Karthik KK', pages: 20, current: 4, times: 0},
-			{title: 'UML 2 Tutorial', author: 'Sparx Systems', pages: 14, current: 0, times: 0}
 		],
 		coursesToWatch: [
 			{title: 'Master Jenkins CI For DevOps and Developers', author: 'Level Up', pages: 59, current: 1, times: 0},
