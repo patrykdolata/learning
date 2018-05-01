@@ -1,0 +1,48 @@
+VPS:
+Adres IP: 195.242.117.64
+Login: root
+Hasło: eoKxvQF
+
+Rocket chat:
+adres: http://195.242.117.64:3000/home
+Instalowanie:
+sudo apt-get update
+sudo apt-get install nodejs
+sudo apt-get install curl
+sudo apt-get install graphicsmagick
+sudo apt-get install npm
+sudo apt-get install build-essential
+sudo npm install -g n
+sudo n 8.9.3
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+sudo service mongod start
+dodać do pliku etc/mongod.conf
+replication:
+	repSetName = "001-rs"
+service mongod restart
+mongo
+re.initiate()
+exit
+dodać do ~/.bashrs 
+export MONGO_OPLOG_URL=mongodb://localhost:27017/local?replicaSet=001-rs
+curl -L https://releases.rocket.chat/latest/download -o rocket.chat.tgz
+tar zxvf rocket.chat.tgz
+mv bundle Rocket.Chat
+cd Rocket.Chat/programs/server
+npm install
+cd ../..
+export ROOT_URL=http://195.242.117.64:3000/
+export MONGO_URL=mongodb://localhost:27017/rocketchat
+export PORT=3000
+node main.js
+apt-get install nginx
+ustawienie ssl: https://rocket.chat/docs/installation/manual-installation/configuring-ssl-reverse-proxy/
+
+GitLab:
+Instalacja:
+https://about.gitlab.com/installation/#ubuntu
+sudo EXTERNAL_URL="http://195.242.117.64/gitlab" apt-get install gitlab-ee
