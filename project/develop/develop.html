@@ -1,0 +1,57 @@
+<div id="develop">
+	<ul id="developMenu">
+		<li><button class="developMenuButtonPressed" id="booksTabButton" @click="selectTab('books')">Książki</button></li>
+		<li><button id="coursesTabButton" @click="selectTab('courses')">Kursy</button></li>
+	</ul>
+	<div v-if="show === 'books'">
+		<strong>Książki obecnie czytane:</strong>
+		<ul>
+			<li v-for="(bookInProgress, index) in inProgressBooks">{{bookInProgress.title}}
+				<div class="progressContainer">
+					<div @mouseover="showProgressNumber(bookInProgress)" @mouseleave="hideProgressNumber(bookInProgress)" class="progressBarContainer">
+							<div class="progressBar" :style="{width: (bookInProgress.current/bookInProgress.pages*100) + 'px'}">
+								<div v-if="bookInProgress.progress" :class="['progressBarIncrement',bookInProgress.progressClass]" :style="{width: (bookInProgress.progress/bookInProgress.pages*100) + 'px', marginLeft: (bookInProgress.current/bookInProgress.pages*100-bookInProgress.progress/bookInProgress.pages*100) + 'px'}"></div>
+							</div>
+					
+					</div>
+					<div v-if="bookInProgress.progress" :class="bookInProgress.progressClass">+{{bookInProgress.progress}} aktualizowany: {{bookInProgress.lastUpdate}}</div>
+				</div>
+			</li>
+		</ul>
+		<strong>Książki do przeczytania:</strong>
+		<ul>
+			<li v-for="bookToRead in booksToRead">{{bookToRead.title}}</li>
+		</ul>
+		<strong>Książki przeczytane:</strong>
+		<ul>
+			<li v-for="readBook in readBooks">{{readBook.title}} <template v-if="readBook.last">({{readBook.last}})</template></li>
+		</ul>
+	</div>
+	<div v-if="show === 'courses'">
+		<strong>Kursy przerabiane:</strong>
+		<ul>
+			<li v-for="(courseInProgress, index) in inProgressCourses">{{courseInProgress.title}}
+				<div class="progressContainer">
+					<div @mouseover="showProgressNumber(courseInProgress)" @mouseleave="hideProgressNumber(courseInProgress)" class="progressBarContainer">
+							<div class="progressBar" :style="{width: (courseInProgress.current/courseInProgress.pages*100) + 'px'}">
+								<div v-if="courseInProgress.progress" :class="['progressBarIncrement',courseInProgress.progressClass]" :style="{width: (courseInProgress.progress/courseInProgress.pages*100) + 'px', marginLeft: (courseInProgress.current/courseInProgress.pages*100-courseInProgress.progress/courseInProgress.pages*100) + 'px'}"></div>
+							</div>
+					
+					</div>
+					<div v-if="courseInProgress.progress" :class="courseInProgress.progressClass">+{{courseInProgress.progress}}</div>
+				</div>
+			</li>
+		</ul>
+		<strong>Kursy do przerobienia:</strong>
+		<ul>
+			<li v-for="courseToWatch in coursesToWatch">{{courseToWatch.title}}</li>
+		</ul>
+		<strong>Kursy przerobione:</strong>
+		<ul>
+			<li v-for="doneCourse in doneCourses">{{doneCourse.title}} ({{doneCourse.last}})</li>
+		</ul>
+	</div>
+	<div v-if="show==='diet'">
+		<button @click="getHTML()">Klik</button>
+	</div>
+</div>
