@@ -22,10 +22,10 @@ sudo apt-get install -y mongodb-org
 sudo service mongod start
 dodać do pliku etc/mongod.conf
 replication:
-	repSetName = "001-rs"
+	replSetName = "001-rs"
 service mongod restart
 mongo
-re.initiate()
+rs.initiate()
 exit
 dodać do ~/.bashrs 
 export MONGO_OPLOG_URL=mongodb://localhost:27017/local?replicaSet=001-rs
@@ -35,7 +35,7 @@ mv bundle Rocket.Chat
 cd Rocket.Chat/programs/server
 npm install
 cd ../..
-export ROOT_URL=http://195.242.117.64:3000/
+export ROOT_URL=http://167.99.213.97:3000/
 export MONGO_URL=mongodb://localhost:27017/rocketchat
 export PORT=3000
 node main.js
@@ -46,3 +46,7 @@ GitLab:
 Instalacja:
 https://about.gitlab.com/installation/#ubuntu
 sudo EXTERNAL_URL="http://195.242.117.64/gitlab" apt-get install gitlab-ee
+
+
+pscp.exe -r root@167.99.213.97:/home/rocket D:\Programowanie\Repository\cottonpickers\scripts\rocket
+pscp.exe D:\Programowanie\Repository\cottonpickers\scripts\mongoRepl.txt root@167.99.213.97:/home/mongoRepl.txt

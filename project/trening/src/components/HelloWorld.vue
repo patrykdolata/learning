@@ -1,102 +1,75 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li>
-        <a
-          href="https://vuejs.org"
-          target="_blank"
-        >
-          Core Docs
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://forum.vuejs.org"
-          target="_blank"
-        >
-          Forum
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://chat.vuejs.org"
-          target="_blank"
-        >
-          Community Chat
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://twitter.com/vuejs"
-          target="_blank"
-        >
-          Twitter
-        </a>
-      </li>
-      <br>
-      <li>
-        <a
-          href="http://vuejs-templates.github.io/webpack/"
-          target="_blank"
-        >
-          Docs for This Template
-        </a>
-      </li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li>
-        <a
-          href="http://router.vuejs.org/"
-          target="_blank"
-        >
-          vue-router
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vuex.vuejs.org/"
-          target="_blank"
-        >
-          vuex
-        </a>
-      </li>
-      <li>
-        <a
-          href="http://vue-loader.vuejs.org/"
-          target="_blank"
-        >
-          vue-loader
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
-      </li>
-    </ul>
+    <table>
+      <tr>
+        <td @click="clicked('HIIT')">HIIT</td>
+        <td @click="clicked('PULL_UPS')">Podciąganie</td>
+        <td @click="clicked('PUSH_UPS')">Pompki</td>
+        <td>Pompki w staniu</td>
+      </tr>
+      <tr>
+        <td  v-if="show" colspan="4"><span v-html="trenningContent"></span></td>
+      </tr>
+    </table>
   </div>
 </template>
 
 <script>
+const TRENNING = {
+  HIIT: "HIIT",
+  PUSH_UPS: "PUSH_UPS",
+  PULL_UPS: "PULL_UPS",
+  HAND_UPS: "HAND_UPS",
+  UNDEFINED: ""
+};
+
+const PULL_UPS_ROW = 'Powtórzeń: <input type="text">';
+
 export default {
-  name: 'HelloWorld',
-  data () {
+  name: "HelloWorld",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      show: false,
+      trenningContent: "<p>o co chodzi</p>",
+      trenningType: TRENNING.UNDEFINED,
+      trenningData: [20, 50]
+    };
+  },
+  methods: {
+    clicked(type){
+      this.show = true;
+      switch(type){
+        case 'HIIT': this.hiit();
+        break;
+        case 'PULL_UPS':this.pullUps();
+        break;
+      }
+    },
+    hiit(){
+      this.trenningType = TRENNING.HIIT;
+      this.trenningContent = "<p>Wybrano hiit</p>";
+    },
+    pullUps(){
+      this.trenningType = TRENNING.PULL_UPS;
+      this.trenningContent = "<p>Wybrano pull ups</p>";
+      this.trenningContent += '<div v-for="el in trenningData"></div>';
+    },
+    addPullUpsRow(){
+      this.trenningContent += PULL_UPS_ROW
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+td {
+  height: 50px;
+  width: 100px;
+  background-color: bisque;
+}
+h1,
+h2 {
   font-weight: normal;
 }
 ul {

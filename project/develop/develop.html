@@ -14,7 +14,7 @@
 							</div>
 					
 					</div>
-					<div v-if="bookInProgress.progress" :class="bookInProgress.progressClass">+{{bookInProgress.progress}}</div>
+					<div v-if="bookInProgress.progress" :class="bookInProgress.progressClass">+{{bookInProgress.progress}} aktualizowany: {{bookInProgress.lastUpdate}}</div>
 				</div>
 			</li>
 		</ul>
