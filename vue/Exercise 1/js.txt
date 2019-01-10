@@ -1,0 +1,16 @@
+new Vue({
+  el: '#exercise',
+  data: {
+    name: 'Patryk',
+    age: 25,
+    image: "https://thumb1.shutterstock.com/display_pic_with_logo/450076/523867156/stock-vector-approved-rubber-stamp-vector-illustration-on-white-background-approved-vector-stamp-icon-523867156.jpg"
+  },
+  methods: {
+    multipleAge: function() {
+      return this.age * 3
+    },
+    randomFloat: function() {
+      return Math.random(0, 1)
+    }
+  }
+})
