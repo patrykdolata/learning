@@ -30,7 +30,12 @@ public class Main {
         for (int y = 0; y < result.length; y++) {
             for (int x = 0; x < result[0].length; x++) {
                 //System.out.print(result[x][y]);
-                System.out.print(result[x][y]==1?"1": ".");
+                if (x == 1 && y == 200) {
+                    System.out.print("*");
+                } else {
+
+                    System.out.print(result[y][x] == 1 ? "1" : ".");
+                }
             }
             System.out.print("\n");
         }
@@ -42,7 +47,7 @@ public class Main {
 //        showResult(spiralize(2));
 //        showResult(spiralize(3));
 //        showResult(spiralize(4));
-        showResult(Main2.spiralize(99));
+        showResult(spiralize(3));
         /*              { 1, 1, 1, 1, 1, 1, 1, 1 },
                         { 0, 0, 0, 0, 0, 0, 0, 1 },
                         { 1, 1, 1, 1, 1, 1, 0, 1 },
@@ -75,25 +80,29 @@ public class Main {
                     break;
                 }
             }
+            showResult(result);
+            System.out.println();
         }
-
+        if (size > 2 && size%2 == 0) { result[size/2][size/2-1] = 1; }// buggy kata
         return result;
     }
 
     private static boolean canPutOneHere(Direction direction, Point position, int[][] result) {
         int size = result.length;
+
         if (direction != Direction.LEFT && position.x + 1 < size && result[position.y][position.x + 1] == 1) {
             return false;
         }
-        if (direction != Direction.RIGHT && position.x - 1 > 0 && result[position.y][position.x - 1] == 1) {
+        if (direction != Direction.RIGHT && position.x - 1 >= 0 && result[position.y][position.x - 1] == 1) {
             return false;
         }
         if (direction != Direction.UP && position.y + 1 < size && result[position.y + 1][position.x] == 1) {
             return false;
         }
-        if (direction != Direction.DOWN && position.y - 1 > 0 && result[position.y - 1][position.x] == 1) {
+        if (direction != Direction.DOWN && position.y - 1 >= 0 && result[position.y - 1][position.x] == 1) {
             return false;
         }
+
         return true;
     }
 
